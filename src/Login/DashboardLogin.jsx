@@ -4,19 +4,19 @@ import {
   Box,
   Button,
   Card,
-  CheckBox,
   Divider,
   FormControlLabel,
   IconButton,
   TextField,
   Typography,
+  Checkbox,
 } from "@mui/material";
 import * as yup from "yup";
 import { useEffect, useState } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useFormik } from "formik";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -309,7 +309,7 @@ const DashboardLogin = () => {
               >
                 <FormControlLabel
                   control={
-                    <CheckBox
+                    <Checkbox
                       name="checkedA"
                       color="primary"
                       onChange={(e) => setRememberMe(e.target.checked)}
@@ -343,11 +343,10 @@ const DashboardLogin = () => {
                       fontSize: "smaller",
                     },
                   }}
-                  as={Link}
-                  to="/forgotpassword"
+                  
                 >
                   Forgot Password?
-                <Typography>
+                </Typography>
               </Box>
             </Box>
             <div className="d-flex justify-content-center align-items-center">
@@ -383,7 +382,7 @@ const DashboardLogin = () => {
                 fontWeight: "bold",
                 "@media (max-width:430px)": { fontSize: "smaller" },
               }}
-              as={Link}
+              // as={Link}
               to="/signup"
             >
               Don't have an account?

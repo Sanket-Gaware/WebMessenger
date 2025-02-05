@@ -3,9 +3,8 @@ import { Suspense } from "react";
 import React from "react";
 import Loader from "../Loader/Loader";
 const DashboardLogin = React.lazy(() => import("../Login/DashboardLogin"));
-const ForgotPassword = React.lazy(() => import("../Login/ForgotPassword"));
-const DontHaveAccount = React.lazy(() => import("../Login/DontHaveAccount"));
-const ChatComponent = React.lazy(() => import("../Chats/ChatComponent"));
+const Register = React.lazy(() => import("../Login/Register"));
+const Conversation = React.lazy(() => import("../Chats/Conversation"));
 
 const RouteingFile = () => {
   const router = createBrowserRouter([
@@ -14,16 +13,12 @@ const RouteingFile = () => {
       element: <DashboardLogin />,
     },
     {
-      path: "/forgotpassword",
-      element: <ForgotPassword />,
-    },
-    {
       path: "/signup",
-      element: <DontHaveAccount />,
+      element: <Register />,
     },
     {
       path: "/conversations",
-      element: <ChatComponent />,
+      element: <Conversation />,
     },
   ]);
   return (

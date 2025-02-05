@@ -13,12 +13,12 @@ import {
 } from "@mui/material";
 import * as yup from "yup";
 // import "../Css/DashboardAll.css";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useFormik } from "formik";
 import { Col, Row } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -38,7 +38,7 @@ const validationSchema = yup.object({
     .oneOf([yup.ref("password"), null], "Passwords must match"),
 });
 
-const DontHaveAccount = () => {
+const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [profile, setProfile] = useState(null);
@@ -123,9 +123,7 @@ const DontHaveAccount = () => {
               variant="h5"
               sx={{ fontWeight: "bold", letterSpacing: "1px" }}
             >
-              <Avatar src="/DashboardImages/Berry.png" />
-              <span className="mx-1" />
-              View Point
+              Chat App
             </Typography>
             <br />
             <Typography
@@ -510,7 +508,6 @@ const DontHaveAccount = () => {
               </Row>
             </Box>
           </Box>
-          {/* <Popper sx={{ width: "65%", mx: "auto" }} /> */}
           <div className="d-flex justify-content-center align-items-center">
             <Button
               type="submit"
@@ -529,7 +526,6 @@ const DontHaveAccount = () => {
               Sign Up
             </Button>
           </div>
-          {/* </MuiBox> */}
 
           <Divider
             sx={{
@@ -546,7 +542,7 @@ const DontHaveAccount = () => {
               fontWeight: "bold",
               "@media (max-width:430px)": { fontSize: "smaller" },
             }}
-            as={Link}
+            // as={Link}
             to="/"
           >
             Already have an account?
@@ -556,7 +552,7 @@ const DontHaveAccount = () => {
     </div>
   );
 };
-export default DontHaveAccount;
+export default Register;
 
 const ProfileImages = [
   {
