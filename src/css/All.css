@@ -1,0 +1,37 @@
+.currentuser {
+  background-color: #aeea94;
+}
+.chatbar {
+  overflow-y: scroll !important;
+  max-height: 400px;
+  scrollbar-width: none;
+  background-color: white;
+}
+.chatarea {
+  overflow: auto;
+  height: 50vh;
+  scrollbar-width: none;
+  background-color: rgb(235, 242, 243);
+}
+.msground {
+  background-color: rgb(200, 252, 200);
+  border: 1px solid rgb(175, 238, 175);
+  padding: 5px;
+  border-radius: 10px 0px 10px 10px;
+  max-width: 75%;
+  word-wrap: break-word;
+}
+.msground1 {
+  background-color: rgb(216, 216, 253);
+  border: 1px solid rgb(164, 164, 221);
+  padding: 5px 0px 0px 0px;
+  border-radius: 0px 10px 10px 10px;
+  max-width: 75%;
+  word-wrap: break-word;
+}
+.sendbarbg {
+  background-color: rgb(230, 245, 247);
+}
+.sendbar {
+  background-color: rgb(235, 208, 248);
+}

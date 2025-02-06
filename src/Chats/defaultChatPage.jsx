@@ -1,10 +1,9 @@
-
 const DefaultChatPage = () => {
   return (
     <div
       className="d-flex justify-content-center"
       style={{
-        backgroundImage: `url('/DashboardImages/chatbg.jpg')`,
+        backgroundImage: `url('/chatbg.jpg')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",

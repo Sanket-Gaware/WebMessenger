@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -343,7 +343,6 @@ const DashboardLogin = () => {
                       fontSize: "smaller",
                     },
                   }}
-                  
                 >
                   Forgot Password?
                 </Typography>
@@ -382,7 +381,7 @@ const DashboardLogin = () => {
                 fontWeight: "bold",
                 "@media (max-width:430px)": { fontSize: "smaller" },
               }}
-              // as={Link}
+              as={Link}
               to="/signup"
             >
               Don't have an account?

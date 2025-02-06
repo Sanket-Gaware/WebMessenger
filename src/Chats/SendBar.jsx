@@ -4,6 +4,8 @@ import AttachmentIcon from "@mui/icons-material/Attachment";
 import { useState } from "react";
 import axios from "axios";
 import { IconButton, TextField } from "@mui/material";
+import "../css/All.css";
+
 const SendBar = ({ id, sid, socket }) => {
   const token = localStorage.getItem("Token");
   const [sendMessage, setSendMessage] = useState("");
@@ -37,17 +39,19 @@ const SendBar = ({ id, sid, socket }) => {
     }
   };
   return (
-    <div className="d-flex justify-content-between align-items-center border rounded-3 p-lg-2 p-md-2 px-0 py-1 mt-0 mt-md-2 mt-lg-2 sendbar">
+    <div className="d-flex justify-content-between align-items-center rounded-3 p-lg-2 p-md-2 px-0 py-1 mt-0 mt-md-2 mt-lg-2 m-2 sendbar">
       <IconButton
         sx={{
-          borderRadius: "50%",
-          padding: "8px",
+          padding: "10px",
         }}
       >
         <SentimentSatisfiedAltIcon color="primary" />
       </IconButton>
       <TextField
-        sx={{ width: "85%", marginRight: { md: "10px", xs: "0px" } }}
+        sx={{
+          width: "85%",
+          marginRight: { md: "10px", xs: "0px" },
+        }}
         placeholder="Type a message..."
         value={sendMessage}
         onChange={(e) => setSendMessage(e.target.value)}
@@ -58,6 +62,10 @@ const SendBar = ({ id, sid, socket }) => {
             borderRadius: "20px",
             paddingLeft: "10px",
             paddingRight: "10px",
+            backgroundColor: "#F5F5F5",
+            "&:focus": {
+              backgroundColor: "#F9F9F9",
+            },
           },
         }}
       />
