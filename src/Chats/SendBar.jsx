@@ -46,7 +46,7 @@ const SendBar = ({ id, sid, socket }) => {
         }}
       >
         <SentimentSatisfiedAltIcon color="primary" />
-      </IconButton>
+      </IconButton> 
       <TextField
         sx={{
           width: "85%",

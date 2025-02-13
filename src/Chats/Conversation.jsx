@@ -395,9 +395,11 @@ const Conversation = () => {
                       </div>
                     ))
                   ) : (
-                    <Typography className="d-flex justify-content-center align-items-center my-auto">
-                      No messages yet
-                    </Typography>
+                    <div>
+                      <Typography className="d-flex justify-content-center align-items-center my-auto">
+                        No messages yet
+                      </Typography>
+                    </div>
                   )}
                 </Box>
                 <div
