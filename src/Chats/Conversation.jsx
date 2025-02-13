@@ -7,13 +7,12 @@ import {
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import {
-//   Search,
-//   SearchIconWrapper,
-//   StyledInputBase,
-// } from "../SearchBar/SearchBox";
+import {
+  Search,
+  SearchIconWrapper,
+  StyledInputBase,
+} from "../SearchBar/SearchBox";
 import SendBar from "./SendBar";
-// import SearchIcon from "@mui/icons-material/Search";
 import DefaultChatPage from "./defaultChatPage";
 import "../css/All.css";
 import {
@@ -31,7 +30,8 @@ import {
 import useSocket from "../CustomHooks/useSocket";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-// import SearchIcon from "@mui/icons-material/Search";
+import SearchIcon from "@mui/icons-material/Search";
+// import EmojiPicker from "emoji-picker-react";
 
 const Conversation = () => {
   const [users, setUsers] = useState([]);
@@ -42,7 +42,7 @@ const Conversation = () => {
   const [state, setState] = useState("none");
   const token = localStorage.getItem("Token");
   const username = localStorage.getItem("username");
-  // const [ipSearch, setIpSearch] = useState("");
+  const [ipSearch, setIpSearch] = useState("");
   const [open, setOpen] = useState(null);
   const [rid, setRid] = useState(null);
   const [sid, setSid] = useState(null);
@@ -114,17 +114,17 @@ const Conversation = () => {
   }, [socket, rid]);
 
   // Handle search
-  // const handleSearch = (input) => {
-  //   setIpSearch(input);
-  //   if (ipSearch !== "") {
-  //     const filteredUsers = users.filter((user) =>
-  //       user.fullname.toLowerCase().includes(input.toLowerCase())
-  //     );
-  //     setUsers1(filteredUsers);
-  //   } else {
-  //     setUsers1(users);
-  //   }
-  // };
+  const handleSearch = (input) => {
+    setIpSearch(input);
+    if (ipSearch !== "") {
+      const filteredUsers = users.filter((user) =>
+        user.fullname.toLowerCase().includes(input.toLowerCase())
+      );
+      setUsers1(filteredUsers);
+    } else {
+      setUsers1(users);
+    }
+  };
 
   const handleLogout = () => {
     toast.success(
@@ -152,11 +152,11 @@ const Conversation = () => {
   // removeToken();
 
   return (
-    <div className="container-fluid p-md-5 p-lg-5 p-sm-5 p-0">
+    <div className="container-fluid p-md-1 p-lg-0 p-sm-5 p-0 border ">
       {err == "" ? (
-        <div className="row d-flex">
+        <div className="row d-flex mx-0">
           <Box
-            className="col-md-4 col-xs-12"
+            className="col-md-4 col-xs-12 p-0"
             sx={{
               display: {
                 xs: `${state == "none" ? "flex" : "none"}`,
@@ -165,8 +165,8 @@ const Conversation = () => {
               flex: "column",
             }}
           >
-            <Card className=" flex-grow-1">
-              <Typography className=" p-3 d-flex justify-content-between align-items-center mb-0 currentuser">
+            <Card className="flex-grow-1" sx={{ boxShadow: { xs: "none" } }}>
+              <Typography className=" px-3 py-2 d-flex justify-content-between align-items-center mb-0 currentuser">
                 {currentUser && (
                   <div className="d-flex align-items-center gap-2">
                     <Avatar src={currentUser.profile} />
@@ -182,34 +182,53 @@ const Conversation = () => {
                   <Logout sx={{ color: "red" }} />
                 </IconButton>
               </Typography>
-              {/* <Search>
-                <SearchIconWrapper>
-                  <SearchIcon
-                    sx={{
-                      color: "rgb(18, 25, 38)",
-                      width: { md: "20px" },
-                      marginInlineStart: { xs: 1, md: 0 },
-                    }}
-                  />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  sx={{
-                    color: "rgb(18, 25, 38);",
-                    fontWeight: 500,
-                    marginInlineStart: { xs: 3, md: 0 },
-                  }}
-                  placeholder="Search…"
-                  type="search"
-                  value={ipSearch}
-                  onChange={(e) => handleSearch(e.target.value)}
-                />
-              </Search> */}
 
               <div className="py-3 px-2 chatbar">
+                <Search
+                  sx={{
+                    borderRadius: "25px",
+                    margin: "-10px 2px -10px 2px",
+                    border: "none",
+                  }}
+                >
+                  <SearchIconWrapper>
+                    <SearchIcon
+                      sx={{
+                        color: "rgb(18, 25, 38)",
+                        width: { md: "20px" },
+                        marginInlineStart: { xs: 1, md: 0 },
+                      }}
+                    />
+                  </SearchIconWrapper>
+                  <StyledInputBase
+                    sx={{
+                      color: "rgb(18, 25, 38);",
+                      fontWeight: 500,
+                      marginInlineStart: {
+                        xs: 3,
+                        md: 0,
+                      },
+                      "& .MuiInputBase-input": {
+                        borderRadius: "25px",
+                        "&:focus": { borderRadius: "25px" },
+                      },
+                    }}
+                    placeholder="Search…"
+                    type="search"
+                    value={ipSearch}
+                    onChange={(e) => handleSearch(e.target.value)}
+                  />
+                </Search>
                 {users1
                   .filter((user) => user.username !== username)
                   .map((user, i) => (
                     <div key={i} onClick={() => handleSelectedUser(user._id)}>
+                      <Divider
+                        sx={{
+                          my: 2,
+                          borderBottom: "1px solid gray",
+                        }}
+                      />
                       <div className="d-flex justify-content-between align-items-center mx-2 ">
                         <div
                           className="d-flex gap-2"
@@ -225,19 +244,13 @@ const Conversation = () => {
                           <Typography>&hearts;</Typography>
                         </div>
                       </div>
-                      <Divider
-                        sx={{
-                          my: 2,
-                          borderBottom: "1px solid gray",
-                        }}
-                      />
                     </div>
                   ))}
               </div>
             </Card>
           </Box>
           <Box
-            className="col-md-8"
+            className="col-md-8 p-0"
             sx={{
               minHeight: "100%",
               display: { xs: `${state}`, md: "flex" },
@@ -247,7 +260,7 @@ const Conversation = () => {
               <DefaultChatPage />
             ) : (
               <Card
-                className=" d-flex flex-column h-100 p-md-0 p-1"
+                className="d-flex flex-column h-100 p-md-0 px-2"
                 sx={{
                   backgroundImage: `url('/DashboardImages/chatbg.jpg')`,
                   backgroundSize: "cover",
@@ -255,17 +268,19 @@ const Conversation = () => {
                   backgroundRepeat: "no-repeat",
                   height: "100%",
                   width: "100%",
+                  boxShadow: { xs: "none" },
                 }}
               >
                 {chatUser && (
-                  <div className="sendbar p-md-2 p-lg-2">
-                    <Typography className="d-flex justify-content-between align-items-center mb-1">
+                  <div className="sendbar p-md-2 p-lg-2 m-0">
+                    <Typography className="d-flex justify-content-between align-items-center mb-0">
                       <div className="d-flex align-items-center gap-md-2 gap-lg-2 gap-1">
                         <IconButton
                           sx={{
                             px: 0,
                             "&:hover": { backgroundColor: "transparent" },
                             display: { xs: "block", md: "none" },
+                            p: 1,
                           }}
                         >
                           <ArrowBack sx={{}} onClick={handleMobileView} />
@@ -299,8 +314,8 @@ const Conversation = () => {
                           onClose={() => setOpen(null)}
                           sx={{
                             top: {
-                              md: "140px",
-                              xs: "120px",
+                              md: "30px",
+                              xs: "20px",
                             },
                             "& .MuiPaper-root": {
                               borderRadius: "10px",
@@ -338,35 +353,41 @@ const Conversation = () => {
 
                 <Divider sx={{ borderBottom: "1px solid gray" }} />
 
-                <Box className="flex-grow-1 pb-2 chatarea p-lg-3 p-1">
+                <Box className="flex-grow-1 pb-2 chatarea p-lg-2 p-1">
                   {messages.length > 0 ? (
                     messages.map((data, i) => (
                       <div key={i}>
                         {data.senderId !== chatUser._id ? (
                           <div className="d-flex justify-content-end">
                             <div className="msground px-2 mb-3">
-                              <Typography sx={{ mb: "1px" }} className="">
+                              <Typography sx={{ mb: "-2px" }} className="">
                                 {data.message}
                               </Typography>
                               <Typography
                                 sx={{ fontSize: "x-small" }}
                                 className="text-muted d-flex justify-content-end user-select-none"
                               >
-                                {new Date(data.createdAt).toLocaleTimeString()}
+                                {new Date(data.createdAt).toLocaleTimeString(
+                                  [],
+                                  { hour: "2-digit", minute: "2-digit" }
+                                )}
                               </Typography>
                             </div>
                           </div>
                         ) : (
                           <div className="d-flex justify-content-start">
                             <div className="msground1 px-2 mb-3">
-                              <Typography sx={{ mb: "1px" }} className="">
+                              <Typography sx={{ mb: "-2px" }} className="">
                                 {data.message}
                               </Typography>
                               <Typography
                                 sx={{ fontSize: "x-small" }}
                                 className="text-muted d-flex justify-content-end user-select-none"
                               >
-                                {new Date(data.createdAt).toLocaleTimeString()}
+                                {new Date(data.createdAt).toLocaleTimeString(
+                                  [],
+                                  { hour: "2-digit", minute: "2-digit" }
+                                )}
                               </Typography>
                             </div>
                           </div>
@@ -384,6 +405,7 @@ const Conversation = () => {
                   style={{ bottom: 0 }}
                 >
                   <SendBar
+                    sx={{ position: "fixed" }}
                     id={chatUser}
                     // onSend={handleSelectedUser}
                     sid={sid}

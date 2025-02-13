@@ -1,15 +1,16 @@
 .currentuser {
   background-color: #aeea94;
+  
 }
 .chatbar {
   overflow-y: scroll !important;
-  max-height: 400px;
+  max-height: 100vh;
   scrollbar-width: none;
   background-color: white;
 }
 .chatarea {
   overflow: auto;
-  height: 50vh;
+  height: 75vh;
   scrollbar-width: none;
   background-color: rgb(235, 242, 243);
 }
@@ -31,6 +32,7 @@
 }
 .sendbarbg {
   background-color: rgb(230, 245, 247);
+  /* position: fixed; */
 }
 .sendbar {
   background-color: rgb(235, 208, 248);

@@ -6,21 +6,21 @@ import { InputBase } from "@mui/material/";
 export const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: "rgb(248, 250, 252)",
+  backgroundColor: "rgb(243, 246, 248)",
   border: "1px solid #d6d6c2",
   display: "flex",
   alignItems: "center",
   "&:hover": {
     backgroundColor: "rgb(248, 250, 252)",
-    border: "1.6px solid black",
+    // border: "1.6px solid black",
   },
   "&:focus-within": {
     backgroundColor: "rgb(248, 250, 252)",
     border: "1.6px solid #3296f3",
+    marginRight: theme.spacing(0),
+    marginLeft: 0,
+    width: "99%",
   },
-  marginRight: theme.spacing(1),
-  marginLeft: 5,
-  width: "97%",
 }));
 
 export const SearchIconWrapper = styled("div")(({ theme }) => ({
